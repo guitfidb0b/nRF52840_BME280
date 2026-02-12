@@ -1,0 +1,7 @@
+default: nRF52840_BME280
+build_dir: C:/myfw/ncsfund/Projects/nRF52840_BME280/build
+domains:
+  - name: nRF52840_BME280
+    build_dir: C:/myfw/ncsfund/Projects/nRF52840_BME280/build/nRF52840_BME280
+flash_order:
+  - nRF52840_BME280

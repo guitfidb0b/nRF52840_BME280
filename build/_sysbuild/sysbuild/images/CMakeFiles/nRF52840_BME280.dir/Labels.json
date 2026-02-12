@@ -1,0 +1,43 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "C:/myfw/ncsfund/Projects/nRF52840_BME280/build/_sysbuild/sysbuild/images/CMakeFiles/nRF52840_BME280"
+		},
+		{
+			"file" : "C:/myfw/ncsfund/Projects/nRF52840_BME280/build/_sysbuild/sysbuild/images/CMakeFiles/nRF52840_BME280.rule"
+		},
+		{
+			"file" : "C:/myfw/ncsfund/Projects/nRF52840_BME280/build/_sysbuild/sysbuild/images/CMakeFiles/nRF52840_BME280-complete.rule"
+		},
+		{
+			"file" : "C:/myfw/ncsfund/Projects/nRF52840_BME280/build/_sysbuild/sysbuild/images/nRF52840_BME280-prefix/src/nRF52840_BME280-stamp/nRF52840_BME280-build.rule"
+		},
+		{
+			"file" : "C:/myfw/ncsfund/Projects/nRF52840_BME280/build/_sysbuild/sysbuild/images/nRF52840_BME280-prefix/src/nRF52840_BME280-stamp/nRF52840_BME280-configure.rule"
+		},
+		{
+			"file" : "C:/myfw/ncsfund/Projects/nRF52840_BME280/build/_sysbuild/sysbuild/images/nRF52840_BME280-prefix/src/nRF52840_BME280-stamp/nRF52840_BME280-download.rule"
+		},
+		{
+			"file" : "C:/myfw/ncsfund/Projects/nRF52840_BME280/build/_sysbuild/sysbuild/images/nRF52840_BME280-prefix/src/nRF52840_BME280-stamp/nRF52840_BME280-install.rule"
+		},
+		{
+			"file" : "C:/myfw/ncsfund/Projects/nRF52840_BME280/build/_sysbuild/sysbuild/images/nRF52840_BME280-prefix/src/nRF52840_BME280-stamp/nRF52840_BME280-mkdir.rule"
+		},
+		{
+			"file" : "C:/myfw/ncsfund/Projects/nRF52840_BME280/build/_sysbuild/sysbuild/images/nRF52840_BME280-prefix/src/nRF52840_BME280-stamp/nRF52840_BME280-patch.rule"
+		},
+		{
+			"file" : "C:/myfw/ncsfund/Projects/nRF52840_BME280/build/_sysbuild/sysbuild/images/nRF52840_BME280-prefix/src/nRF52840_BME280-stamp/nRF52840_BME280-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"nRF52840_BME280"
+		],
+		"name" : "nRF52840_BME280"
+	}
+}

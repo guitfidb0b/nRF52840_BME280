@@ -1,0 +1,57 @@
+cmake:
+  application:
+    configuration-dir: 'C:/myfw/ncsfund/Projects/nRF52840_BME280'
+    source-dir: 'C:/myfw/ncsfund/Projects/nRF52840_BME280'
+  board:
+    name: 'nrf52840dk'
+    path:
+     - 'C:/ncs/v3.2.1/zephyr/boards/nordic/nrf52840dk'
+    qualifiers: 'nrf52840'
+    revision: ''
+  devicetree:
+    bindings-dirs:
+     - 'C:/ncs/v3.2.1/nrf/dts/bindings'
+     - 'C:/ncs/v3.2.1/zephyr/dts/bindings'
+    files:
+     - 'C:/ncs/v3.2.1/zephyr/boards/nordic/nrf52840dk/nrf52840dk_nrf52840.dts'
+     - 'boards/nrf52840dk_nrf52840.overlay'
+    include-dirs:
+     - 'C:/ncs/v3.2.1/nrf/include'
+     - 'C:/ncs/v3.2.1/nrf/dts/common'
+     - 'C:/ncs/v3.2.1/nrf/dts/riscv'
+     - 'C:/ncs/v3.2.1/nrf/dts/arm'
+     - 'C:/ncs/v3.2.1/nrf/dts'
+     - 'C:/ncs/v3.2.1/zephyr/include'
+     - 'C:/ncs/v3.2.1/zephyr/include/zephyr'
+     - 'C:/ncs/v3.2.1/zephyr/dts/common'
+     - 'C:/ncs/v3.2.1/zephyr/dts/vendor'
+     - 'C:/ncs/v3.2.1/zephyr/dts/rx'
+     - 'C:/ncs/v3.2.1/zephyr/dts/x86'
+     - 'C:/ncs/v3.2.1/zephyr/dts/xtensa'
+     - 'C:/ncs/v3.2.1/zephyr/dts/sparc'
+     - 'C:/ncs/v3.2.1/zephyr/dts/riscv'
+     - 'C:/ncs/v3.2.1/zephyr/dts/posix'
+     - 'C:/ncs/v3.2.1/zephyr/dts/arm64'
+     - 'C:/ncs/v3.2.1/zephyr/dts/arm'
+     - 'C:/ncs/v3.2.1/zephyr/dts/arc'
+     - 'C:/ncs/v3.2.1/zephyr/dts'
+    user-files:
+     - 'boards/nrf52840dk_nrf52840.overlay'
+  kconfig:
+    files:
+     - 'C:/ncs/v3.2.1/zephyr/boards/nordic/nrf52840dk/nrf52840dk_nrf52840_defconfig'
+     - 'C:/myfw/ncsfund/Projects/nRF52840_BME280/prj.conf'
+     - 'C:/myfw/ncsfund/Projects/nRF52840_BME280/build/nRF52840_BME280/zephyr/misc/generated/extra_kconfig_options.conf'
+     - 'C:/myfw/ncsfund/Projects/nRF52840_BME280/build/nRF52840_BME280/zephyr/.config.sysbuild'
+    user-files:
+     - 'C:/myfw/ncsfund/Projects/nRF52840_BME280/prj.conf'
+  toolchain:
+    name: 'zephyr'
+    path: 'C:/ncs/toolchains/66cdf9b75e/opt/zephyr-sdk'
+  vendor-specific:
+    nordic:
+      svdfile: 'C:/ncs/v3.2.1/modules/hal/nordic/nrfx/bsp/stable/mdk/nrf52840.svd'
+  zephyr:
+    version: '4.2.99'
+    zephyr-base: 'C:/ncs/v3.2.1/zephyr'
+version: '0.1.0'

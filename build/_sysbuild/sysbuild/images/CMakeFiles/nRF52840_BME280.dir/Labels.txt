@@ -1,0 +1,13 @@
+# Target labels
+ nRF52840_BME280
+# Source files and their labels
+C:/myfw/ncsfund/Projects/nRF52840_BME280/build/_sysbuild/sysbuild/images/CMakeFiles/nRF52840_BME280
+C:/myfw/ncsfund/Projects/nRF52840_BME280/build/_sysbuild/sysbuild/images/CMakeFiles/nRF52840_BME280.rule
+C:/myfw/ncsfund/Projects/nRF52840_BME280/build/_sysbuild/sysbuild/images/CMakeFiles/nRF52840_BME280-complete.rule
+C:/myfw/ncsfund/Projects/nRF52840_BME280/build/_sysbuild/sysbuild/images/nRF52840_BME280-prefix/src/nRF52840_BME280-stamp/nRF52840_BME280-build.rule
+C:/myfw/ncsfund/Projects/nRF52840_BME280/build/_sysbuild/sysbuild/images/nRF52840_BME280-prefix/src/nRF52840_BME280-stamp/nRF52840_BME280-configure.rule
+C:/myfw/ncsfund/Projects/nRF52840_BME280/build/_sysbuild/sysbuild/images/nRF52840_BME280-prefix/src/nRF52840_BME280-stamp/nRF52840_BME280-download.rule
+C:/myfw/ncsfund/Projects/nRF52840_BME280/build/_sysbuild/sysbuild/images/nRF52840_BME280-prefix/src/nRF52840_BME280-stamp/nRF52840_BME280-install.rule
+C:/myfw/ncsfund/Projects/nRF52840_BME280/build/_sysbuild/sysbuild/images/nRF52840_BME280-prefix/src/nRF52840_BME280-stamp/nRF52840_BME280-mkdir.rule
+C:/myfw/ncsfund/Projects/nRF52840_BME280/build/_sysbuild/sysbuild/images/nRF52840_BME280-prefix/src/nRF52840_BME280-stamp/nRF52840_BME280-patch.rule
+C:/myfw/ncsfund/Projects/nRF52840_BME280/build/_sysbuild/sysbuild/images/nRF52840_BME280-prefix/src/nRF52840_BME280-stamp/nRF52840_BME280-update.rule

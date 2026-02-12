@@ -1,0 +1,22 @@
+cmake:
+  board:
+    name: 'nrf52840dk'
+    path:
+     - 'C:/ncs/v3.2.1/zephyr/boards/nordic/nrf52840dk'
+    qualifiers: 'nrf52840'
+    revision: ''
+  images:
+   - name: 'nRF52840_BME280'
+     source-dir: 'C:/myfw/ncsfund/Projects/nRF52840_BME280'
+     type: 'MAIN'
+  kconfig:
+    files:
+     - 'C:/myfw/ncsfund/Projects/nRF52840_BME280/build/_sysbuild/empty.conf'
+     - 'C:/myfw/ncsfund/Projects/nRF52840_BME280/build/_sysbuild/empty.conf'
+    user-files:
+     - 'C:/myfw/ncsfund/Projects/nRF52840_BME280/build/_sysbuild/empty.conf'
+version: '0.1.0'
+west:
+  command: 'C:\ncs\toolchains\66cdf9b75e\opt\bin\Scripts\west build --build-dir c:/myfw/ncsfund/Projects/nRF52840_BME280/build c:/myfw/ncsfund/Projects/nRF52840_BME280 --pristine --board nrf52840dk/nrf52840 -- -DCONFIG_DEBUG_THREAD_INFO=y -DDTC_OVERLAY_FILE=boards/nrf52840dk_nrf52840.overlay'
+  topdir: 'c:\ncs\v3.2.1'
+  version: '1.4.0'
