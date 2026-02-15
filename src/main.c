@@ -185,17 +185,18 @@ int main(void)
 		return -1;
 	}
 
-	uint8_t sensor_config[] = {CTRLMEAS, SENSOR_CONFIG_VALUE};
-	ret = i2c_write_dt(&dev_i2c, sensor_config, 2);
-	if (ret != 0) {
-		printk("Failed to write register %x \n", sensor_config[0]);
-		return -1;
-	}
-
 	uint8_t hum_config[] = {HUMMEAS, HUM_CONFIG_VALUE};
 	ret = i2c_write_dt(&dev_i2c, hum_config, 2);
 	if (ret != 0) {
 		printk("Failed to write register %x \n", hum_config[0]);
+		return -1;
+	}
+
+	//sensor_config should be done after hum_config per datasheet
+	uint8_t sensor_config[] = {CTRLMEAS, SENSOR_CONFIG_VALUE};
+	ret = i2c_write_dt(&dev_i2c, sensor_config, 2);
+	if (ret != 0) {
+		printk("Failed to write register %x \n", sensor_config[0]);
 		return -1;
 	}
 
@@ -215,9 +216,9 @@ int main(void)
 
 		//printk("*** hum val: %d  %d\n", press_val[6], press_val[7]);
 		//printk("*** adc Hum: %d\n", adc_hum);
-		for(int i =0; i<8; i++){
-			printk("*** val %d: %d\n", i, press_val[i]);
-		}
+//		for(int i =0; i<8; i++){
+//			printk("*** val %d: %d\n", i, press_val[i]);
+//		}
 
 		//printk("ADCHum: %d\n", adc_hum);
 		int32_t comp_temp = bme280_compensate_temp(&bmedata, adc_temp);
@@ -229,10 +230,10 @@ int main(void)
 		double pressure = (double)comp_press * 0.0001450377;
 		double humidity = (double)comp_hum / 1024.0;
 		// Print reading to console
-		printk("Temperature in Fahrenheit : %.2f F\n", fTemp);
-		printk("Pressure in PSI: %.2f PSI\n", pressure);
-		printk("Humidity: %.2f percent\n", humidity);
-		printk("Humidity (raw): %d\n\n", comp_hum);
+//		printk("Temperature in Fahrenheit : %.2f F\n", fTemp);
+//		printk("Pressure in PSI: %.2f PSI\n", pressure);
+//		printk("Humidity: %.2f percent\n", humidity);
+//		printk("Humidity (raw): %d\n\n", comp_hum);
 		k_msleep(SLEEP_TIME_MS);
 	}
 }
