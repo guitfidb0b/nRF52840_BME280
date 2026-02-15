@@ -18,9 +18,9 @@
 #define TEMPMSB	 0xFA
 #define PRESSMSB 0xF7
 #define CHIP_ID  0x60
-#define SENSOR_CONFIG_VALUE 0x27
+#define SENSOR_CONFIG_VALUE 0x93
 #define HUMMEAS  0xF2
-#define HUM_CONFIG_VALUE 0x01
+#define HUM_CONFIG_VALUE 0x04
 #define SOFTRST  0xE0
 #define RESET_CONFIG_VALUE 0xB6
 
@@ -68,7 +68,6 @@ void bme_calibrationdata(const struct i2c_dt_spec *spec, struct bme280_data *sen
 		return;
 	}
 
-	printk("Reading comp values: \n");
 	//Problem with values is here
 	sensor_data_ptr->dig_t1 = (uint16_t)((uint16_t)values_l[1] << 8 | values_l[0]);
 	sensor_data_ptr->dig_t2 = (int16_t)((int16_t)values_l[3] << 8 | values_l[2]);
@@ -88,15 +87,9 @@ void bme_calibrationdata(const struct i2c_dt_spec *spec, struct bme280_data *sen
 	sensor_data_ptr->dig_h4 = (int16_t)((int16_t)values_h[5] << 8 | values_h[4]);
 	sensor_data_ptr->dig_h5 = (int16_t)((int16_t)values_h[7] << 8 | values_h[6]);
 	sensor_data_ptr->dig_h6 = ((int8_t)values_h[8]);
-	for(int i = 0; i<24; i++){
-		printk("value %d: %d\n", i, values_l[i]);
-	}
-	for(int i = 0; i<9; i++){
-		printk("value %d: %d\n", i, values_h[i]);
-	}
 }
 
-static int32_t bme280_compensate_press(struct bme280_data *data, int32_t adc_press)
+static uint32_t bme280_compensate_press(struct bme280_data *data, int32_t adc_press)
 {
 	int32_t var1, var2;
 	uint32_t p;
@@ -124,7 +117,7 @@ static int32_t bme280_compensate_press(struct bme280_data *data, int32_t adc_pre
 }
 
 /* Compensate current temperature using previously stored sensor calibration data */
-static int32_t bme280_compensate_temp(struct bme280_data *data, int32_t adc_temp)
+static uint32_t bme280_compensate_temp(struct bme280_data *data, int32_t adc_temp)
 {
 	int32_t var1, var2;
 	var1 = (((adc_temp >> 3) - ((int32_t)data->dig_t1 << 1)) * ((int32_t)data->dig_t2)) >> 11;
@@ -138,7 +131,7 @@ static int32_t bme280_compensate_temp(struct bme280_data *data, int32_t adc_temp
 	return (t_fine * 5 + 128) >> 8;
 }
 
-static int32_t bme280_compensate_hum(struct bme280_data *data, int32_t adc_hum)
+static uint32_t bme280_compensate_hum(struct bme280_data *data, int32_t adc_hum)
 {
 	int32_t var;
 	var = (t_fine - ((int32_t)76800));
@@ -148,17 +141,21 @@ static int32_t bme280_compensate_hum(struct bme280_data *data, int32_t adc_hum)
 		((int32_t)32768))) >> 10) + ((int32_t)2097152)) * ((int32_t)data->dig_h2) + 
 		8192) >> 14));
 	var = (var - (((((var >> 15) * (var >> 15)) >> 7) * ((int32_t)data->dig_h1)) >> 4));
-	var = (var < 0 ? 0 : var);
-	var = (var > 419430400 ? 419430400 : var);
-	printk("*** In function var: %d\n", var >> 12);
-	return (uint32_t)(var >> 12);
+	var = var >> 12;
+	var = var << 8;
+	if(var < 1024){
+		return (uint32_t)1024;
+	}
+	if(var > 102400){
+		return (uint32_t)102400;
+	}
+	return (uint32_t)var;
 }
 
 
 int main(void)
 {
 	static const struct i2c_dt_spec dev_i2c = I2C_DT_SPEC_GET(I2C_NODE);
-	//printk("device addr is %x\n", dev_i2c.addr);
 	if (!device_is_ready(dev_i2c.bus)) {
 		printk("I2C bus %s is not ready!\n", dev_i2c.bus->name);
 		return -1;
@@ -167,7 +164,6 @@ int main(void)
 	uint8_t id = 0;
 	uint8_t regs[] = {ID};
 	int ret = i2c_write_read_dt(&dev_i2c, regs, 1, &id, 1);	
-	//printk("Return value: %d\n", ret);
 	if (ret != 0) {
 		printk("Failed to read register %x \n", regs[0]);
 		return -1;
@@ -214,26 +210,19 @@ int main(void)
 		int32_t adc_press = (press_val[0] << 12) | (press_val[1] << 4) | ((press_val[2] >> 4) & 0x0F);		
 		int32_t adc_hum = (press_val[6] << 8) | (press_val[7]);
 
-		//printk("*** hum val: %d  %d\n", press_val[6], press_val[7]);
-		//printk("*** adc Hum: %d\n", adc_hum);
-//		for(int i =0; i<8; i++){
-//			printk("*** val %d: %d\n", i, press_val[i]);
-//		}
-
-		//printk("ADCHum: %d\n", adc_hum);
-		int32_t comp_temp = bme280_compensate_temp(&bmedata, adc_temp);
-		int32_t comp_press = bme280_compensate_press(&bmedata, adc_press);
-		int32_t comp_hum = bme280_compensate_hum(&bmedata, adc_hum);
+		uint32_t comp_temp = bme280_compensate_temp(&bmedata, adc_temp);
+		uint32_t comp_press = bme280_compensate_press(&bmedata, adc_press);
+		uint32_t comp_hum = bme280_compensate_hum(&bmedata, adc_hum);
 
 		float temperature = (float)comp_temp / 100.0f;
 		double fTemp = (double)temperature * 1.8 + 32;
 		double pressure = (double)comp_press * 0.0001450377;
 		double humidity = (double)comp_hum / 1024.0;
+
 		// Print reading to console
-//		printk("Temperature in Fahrenheit : %.2f F\n", fTemp);
-//		printk("Pressure in PSI: %.2f PSI\n", pressure);
-//		printk("Humidity: %.2f percent\n", humidity);
-//		printk("Humidity (raw): %d\n\n", comp_hum);
+		printk("Temperature in Fahrenheit : %.2f F\n", fTemp);
+		printk("Pressure in PSI: %.2f PSI\n", pressure);
+		printk("Humidity: %.2f percent\n\n", humidity);
 		k_msleep(SLEEP_TIME_MS);
 	}
 }
