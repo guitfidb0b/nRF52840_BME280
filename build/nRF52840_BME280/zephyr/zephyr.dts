@@ -206,11 +206,11 @@
 			                "sleep";        /* in ..\..\myfw\ncsfund\Projects\nRF52840_BME280\build\nRF52840_BME280\zephyr\boards\nrf52840dk_nrf52840.overlay:9 */
 			clock-frequency = < 0x186a0 >;  /* in ..\..\myfw\ncsfund\Projects\nRF52840_BME280\build\nRF52840_BME280\zephyr\boards\nrf52840dk_nrf52840.overlay:16 */
 
-			/* node '/soc/i2c@40003000/bme280@77' defined in ..\..\myfw\ncsfund\Projects\nRF52840_BME280\build\nRF52840_BME280\zephyr\boards\nrf52840dk_nrf52840.overlay:10 */
-			bme280: bme280@77 {
+			/* node '/soc/i2c@40003000/bme280@76' defined in ..\..\myfw\ncsfund\Projects\nRF52840_BME280\build\nRF52840_BME280\zephyr\boards\nrf52840dk_nrf52840.overlay:10 */
+			bme280: bme280@76 {
 				compatible = "bosch,bme280"; /* in ..\..\myfw\ncsfund\Projects\nRF52840_BME280\build\nRF52840_BME280\zephyr\boards\nrf52840dk_nrf52840.overlay:11 */
 				status = "okay";             /* in ..\..\myfw\ncsfund\Projects\nRF52840_BME280\build\nRF52840_BME280\zephyr\boards\nrf52840dk_nrf52840.overlay:12 */
-				reg = < 0x77 >;              /* in ..\..\myfw\ncsfund\Projects\nRF52840_BME280\build\nRF52840_BME280\zephyr\boards\nrf52840dk_nrf52840.overlay:13 */
+				reg = < 0x76 >;              /* in ..\..\myfw\ncsfund\Projects\nRF52840_BME280\build\nRF52840_BME280\zephyr\boards\nrf52840dk_nrf52840.overlay:13 */
 			};
 		};
 

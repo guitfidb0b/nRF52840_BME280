@@ -150,7 +150,7 @@ static int32_t bme280_compensate_hum(struct bme280_data *data, int32_t adc_hum)
 	var = (var - (((((var >> 15) * (var >> 15)) >> 7) * ((int32_t)data->dig_h1)) >> 4));
 	var = (var < 0 ? 0 : var);
 	var = (var > 419430400 ? 419430400 : var);
-	printk("*** In function var: %d\n", var);
+	printk("*** In function var: %d\n", var >> 12);
 	return (uint32_t)(var >> 12);
 }
 
@@ -227,7 +227,7 @@ int main(void)
 		float temperature = (float)comp_temp / 100.0f;
 		double fTemp = (double)temperature * 1.8 + 32;
 		double pressure = (double)comp_press * 0.0001450377;
-		double humidity = (double)comp_hum / 1024.0f;
+		double humidity = (double)comp_hum / 1024.0;
 		// Print reading to console
 		printk("Temperature in Fahrenheit : %.2f F\n", fTemp);
 		printk("Pressure in PSI: %.2f PSI\n", pressure);

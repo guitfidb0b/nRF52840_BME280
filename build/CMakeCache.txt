@@ -76,6 +76,9 @@ CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 CONFIG_DEBUG_THREAD_INFO:UNINITIALIZED=y
 
 //No help, variable specified on the command line.
+DEBUG_THREAD_INFO:UNINITIALIZED=On
+
+//No help, variable specified on the command line.
 DTC_OVERLAY_FILE:UNINITIALIZED=boards/nrf52840dk_nrf52840.overlay
 
 //No help, variable specified on the command line.
@@ -89,6 +92,9 @@ ZEPHYR_RUNNER_CONFIG_KERNEL_HEX:STRING=
 
 //The directory containing a CMake configuration file for Zephyr.
 Zephyr_DIR:PATH=C:/ncs/v3.2.1/zephyr/share/zephyr-package/cmake
+
+//No help, variable specified on the command line.
+nRF52840_BME280_DEBUG_THREAD_INFO:UNINITIALIZED=On
 
 //Value Computed by CMake
 sysbuild_BINARY_DIR:STATIC=C:/myfw/ncsfund/Projects/nRF52840_BME280/build/_sysbuild

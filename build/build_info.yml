@@ -20,6 +20,6 @@ cmake:
   sysbuild: 'true'
 version: '0.1.0'
 west:
-  command: 'C:\ncs\toolchains\66cdf9b75e\opt\bin\Scripts\west build --build-dir c:/myfw/ncsfund/Projects/nRF52840_BME280/build c:/myfw/ncsfund/Projects/nRF52840_BME280 --pristine --board nrf52840dk/nrf52840 -- -DCONFIG_DEBUG_THREAD_INFO=y -DDTC_OVERLAY_FILE=boards/nrf52840dk_nrf52840.overlay'
+  command: 'C:\ncs\toolchains\66cdf9b75e\opt\bin\Scripts\west build --build-dir c:/myfw/ncsfund/Projects/nRF52840_BME280/build c:/myfw/ncsfund/Projects/nRF52840_BME280 --pristine --board nrf52840dk/nrf52840 -- -DDTC_OVERLAY_FILE=boards/nrf52840dk_nrf52840.overlay -DDEBUG_THREAD_INFO=On -DCONFIG_DEBUG_THREAD_INFO=y -DnRF52840_BME280_DEBUG_THREAD_INFO=On'
   topdir: 'c:\ncs\v3.2.1'
   version: '1.4.0'
